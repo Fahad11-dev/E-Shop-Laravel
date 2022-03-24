@@ -26,7 +26,6 @@
 
 body {
 	font-family: 'Inter', sans-serif;
-	background-color: var(--dk-darker-bg);
 	font-size: .925rem;
 }
 
@@ -276,7 +275,7 @@ body {
 -------------------------------- */
 
 .navbar {
-	background-color: var(--navbar-bg-color) !important;
+	background-color: #535354 !important !important;
 	border: none !important;
 }
 .navbar .dropdown-menu {

@@ -17,7 +17,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Route::get('category',[Frontend\FrontendController::class,'category']);
@@ -38,7 +38,6 @@ Route::get('/landing', [FrontendController::class, 'index'])->name('landing');
 
 Route::middleware(['auth', 'isAdmin'])->group(function () {
      Route::get('/dashboard',[FrontendController::class ,'index']);
-
     //  Categories
      Route::get('categories', [CategoryController::class,'index'])->name('categories');
      Route::get('add-categories', [CategoryController::class,'add'])->name('add.categories');
