@@ -1,4 +1,4 @@
-@extends('layouts.front')
+@extends('frontend.header')
 
 @section('title')
     Wellcome to E Shop

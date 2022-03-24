@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\CategoryController;
 use App\Http\Controllers\Frontend\FrontendController;
 use App\Http\Controllers\Admin\ProductController;
+use App\Http\Controllers\CartController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,28 +17,22 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
+Route::get('/login', function () {
     return view('auth.login');
 });
 
 Route::get('category',[Frontend\FrontendController::class,'category']);
 
 Auth::routes();
-
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/', [CartController::class, 'ProductList'])->name('home');
 Route::get('/landing', [FrontendController::class, 'index'])->name('landing');
 
-//  Route::group(['middleware' => ['auth','isAdmin']], function () {
-
-//    Route::get('/dashboard', function () {
-//       return view('admin.index');
-//    });
-
-// });
-
-
 Route::middleware(['auth', 'isAdmin'])->group(function () {
-     Route::get('/dashboard',[FrontendController::class ,'index']);
+    //  Route::get('/dashboard',[FrontendController::class ,'index']);
+    Route::get('/dashboard', function () {
+        return view('admin.dashboard');
+    });
+        
     //  Categories
      Route::get('categories', [CategoryController::class,'index'])->name('categories');
      Route::get('add-categories', [CategoryController::class,'add'])->name('add.categories');

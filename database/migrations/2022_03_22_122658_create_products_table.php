@@ -15,21 +15,11 @@ return new class extends Migration
     {
         Schema::create('products', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('slug');
-            $table->bigInteger('cate_id');
-            $table->mediumText('small_description');
-            $table->longText('description');
-            $table->string('original_price');
-            $table->string('selling_price');
-            $table->string('image');
-            $table->string('qty');
-            $table->string('tax');
-            $table->tinyInteger('status')->default(0);
-            $table->tinyInteger('trending')->default(0);
-            $table->string('meta_title');
-            $table->string('meta_keyword');
-            $table->string('meta_descrip');
+            $table->bigInteger('category_id')->default(0);
+            $table->string('product_title')->nullable();
+            $table->string('price')->nullable();
+            $table->string('stock',50)->nullable();
+            $table->string('image')->nullable();
             $table->timestamps();
         });
     }
